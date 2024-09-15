@@ -74,12 +74,12 @@ const updateUserValidation = (req, res, next) => {
     email: Joi.string().email(),
     mobile: Joi.string()
       .pattern(/^[6-9]\d{9}$/)
-      .required()
       .messages({
         "string.pattern.base":
           "Mobile number must be a valid Indian number starting with 6, 7, 8, or 9 and contain 10 digits",
-        "any.required": "Mobile number is required",
       }),
+      isDeleted: Joi.number().valid(0, 1),
+      status: Joi.number().valid(0, 1)
   }).min(1);
 
   const { error } = schema.validate(req.body);

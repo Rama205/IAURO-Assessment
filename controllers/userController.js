@@ -15,7 +15,21 @@ const sinupUser = async (req, res) => {
         success: false,
       });
     }
+    const existingInactiveUser = await userModel.findOne({ email, isDeleted: 1 });
+    
+    if (existingInactiveUser) {
+      if (existingInactiveUser.is_admin) {
+        return res.status(403).json({
+          message: "This user is an inactive admin and cannot be reactivated.",
+          success: false,
+        });
+      }
 
+      return res.status(403).json({
+        message: "This user is currently inactive. Contact admin to reactivate the account.",
+        success: false,
+      });
+    }
     const adminExists = await userModel.findOne({ is_admin: true });
 
     const newUser = new userModel({
@@ -107,8 +121,9 @@ const insertProducts = async (req, res) => {
       category,
       isDeleted: 0,
       status: 1,
+      createdBy: req.user.id
     });
-
+    
     if (
       existingProduct &&
       existingProduct?.createdBy?.toString() === req.user.id
