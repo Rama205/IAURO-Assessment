@@ -105,7 +105,7 @@ Success Case :
 {
     "message": "Login Success",
     "success": true,
-    "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb2J5QGdtYWlsLmNvbSIsImlkIjoiNjZlNmI2NGFmMTY3NWJjOGIwZDFlOTYzIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTcyNjM5NjcyOSwiZXhwIjoxNzI2NDgzMTI5fQ.PIaaSfEXZ4THgzH8nFMWfyA6bebD45t_SGALxH7maBw",
+    "jwtToken": "auth -TOKEN",
     "email": "rooby@gmail.com",
     "name": "Rooby"
 }
